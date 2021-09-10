@@ -20,8 +20,11 @@ wget https://cdn.traccar.com/js/extjs/$extjsVersion/packages/charts/classic/trit
 # language
 wget https://cdn.traccar.com/js/extjs/$extjsVersion/classic/locale/locale-en.js
 
+#
 wget https://cdn.traccar.com/js/extjs/$extjsVersion/classic/theme-triton/theme-triton.js
 wget https://cdn.traccar.com/js/extjs/$extjsVersion/classic/theme-triton/resources/theme-triton-all.css
+
+#
 wget https://cdn.traccar.com/js/ol/$olVersion/ol.js
 wget https://cdn.traccar.com/js/ol/$olVersion/ol.css
 
