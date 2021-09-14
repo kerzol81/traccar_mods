@@ -1,26 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>Offline Traccar</title>
-<link rel="icon" sizes="192x192" href="/icon.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="app.css">
-</head>
-<body>
-<div id="spinner"></div>
-<div id="update">Preview <a href="/modern/">modern interface</a></div>
-<div id="attribution">Powered by <a href="https://www.traccar.org/">Traccar GPS Tracking System</a></div>
-<script id="loadScript" src="load.js"></script>
-</body>
-</html>
-
-root@traccar:/opt/traccar# cd web/
-root@traccar:/opt/traccar/web# ls
-app  app.css  app.js  app.min.js  apple-touch-icon.png  beep.wav  debug.html  favicon.ico  icon.png  images  l10n  lib  load.js  logo.svg  modern  release.html  simple
-root@traccar:/opt/traccar/web# nano load.js 
-root@traccar:/opt/traccar/web# cat load.js 
 (function () {
     var debugMode, touchMode, locale, localeParameter, extjsVersion, proj4jsVersion, olVersion, i, language, languages, languageDefault;
 
@@ -57,9 +34,9 @@ root@traccar:/opt/traccar/web# cat load.js
 
     locale = {};
     window.Locale = locale;
-    // only english mod
+
     locale.languages = {
-        'en': { name: 'English', code: 'en' }
+        'en': { name: 'English', code: 'en' },
     };
 
     languageDefault = 'en';
