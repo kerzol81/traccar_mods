@@ -24,6 +24,10 @@ body.x-border-layout-ct, div.x-border-layout-ct {
     overflow: visible !important; /* workaround for Safari issue */
 }
 
+.x-panel-header-default-vertical {
+    background-color: #292b2c !important;
+}
+
 #update {
     position: absolute;
     width: 100%;
