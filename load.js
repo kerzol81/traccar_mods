@@ -59,7 +59,7 @@ root@traccar:/opt/traccar/web# cat load.js
     window.Locale = locale;
     // only english mod
     locale.languages = {
-        'en': { name: 'English', code: 'en' },
+        'en': { name: 'English', code: 'en' }
     };
 
     languageDefault = 'en';
