@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Offline Traccar</title>
+<link rel="icon" sizes="192x192" href="/icon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<div id="spinner"></div>
+<div id="update">Preview <a href="/modern/">modern interface</a></div>
+<div id="attribution">Powered by <a href="https://www.traccar.org/">Traccar GPS Tracking System</a></div>
+<script id="loadScript" src="load.js"></script>
+</body>
+</html>
+
+root@traccar:/opt/traccar# cd web/
+root@traccar:/opt/traccar/web# ls
+app  app.css  app.js  app.min.js  apple-touch-icon.png  beep.wav  debug.html  favicon.ico  icon.png  images  l10n  lib  load.js  logo.svg  modern  release.html  simple
+root@traccar:/opt/traccar/web# nano load.js 
+root@traccar:/opt/traccar/web# cat load.js 
 (function () {
     var debugMode, touchMode, locale, localeParameter, extjsVersion, proj4jsVersion, olVersion, i, language, languages, languageDefault;
 
@@ -34,7 +57,7 @@
 
     locale = {};
     window.Locale = locale;
-
+    // only english mod
     locale.languages = {
         'en': { name: 'English', code: 'en' },
     };
@@ -103,52 +126,25 @@
         navigator.__defineGetter__('userAgent', function () { return __originalUserAgent.replace(/\/OPR[^)]*/g, ''); });
     }
 
-    extjsVersion = '6.2.0';
-    olVersion = '6.1.1';
-    proj4jsVersion = '2.6.0';
+    addScriptFile('lib/extjs/ext-all.js');
+    addScriptFile('lib/extjs/classic/locale/locale-' + locale.languages[locale.language].code + '.js');
 
-    if (debugMode) {
-        //addScriptFile('https://cdn.traccar.com/js/extjs/' + extjsVersion + '/ext-all-debug.js');
-        addScriptFile('offline/ext-all-debug.js');
+    addStyleFile('lib/extjs/classic/theme-triton/resources/theme-triton-all.css');
+    addScriptFile('lib/extjs/classic/theme-triton/theme-triton.js');
 
-        //addScriptFile('https://cdn.traccar.com/js/extjs/' + extjsVersion + '/packages/charts/classic/charts-debug.js');
-        addScriptFile('offline/charts-debug.js');    
-    } else {
-        //addScriptFile('https://cdn.traccar.com/js/extjs/' + extjsVersion + '/ext-all.js');
-        addScriptFile('offline/ext-all.js');
+    addScriptFile('lib/extjs/packages/charts/classic/charts.js');
+    addStyleFile('lib/extjs/packages/charts/classic/triton/resources/charts-all.css');
 
-        //addScriptFile('https://cdn.traccar.com/js/extjs/' + extjsVersion + '/packages/charts/classic/charts.js');
-        addScriptFile('offline/charts.js');
-    }
-    //addScriptFile('https://cdn.traccar.com/js/extjs/' + extjsVersion + '/classic/locale/locale-' + locale.languages[locale.language].code + '.js');
-    addScriptFile('offline/locale-en.js');
+    addStyleFile('lib/ol/ol.css');
+    addScriptFile('lib/ol/ol.js');
 
+    addStyleFile('lib/ol-layerswitcher/ol-layerswitcher.css');
+    addScriptFile('lib/ol-layerswitcher/ol-layerswitcher.js');
 
-    addStyleFile('https://cdn.traccar.com/js/extjs/' + extjsVersion + '/classic/theme-triton/resources/theme-triton-all.css');
-    //addStyleFile('offline/theme-triton-all.css');
-
-    //addScriptFile('https://cdn.traccar.com/js/extjs/' + extjsVersion + '/classic/theme-triton/theme-triton.js');
-    addScriptFile('offline/theme-triton.js');
-
-    addStyleFile('https://cdn.traccar.com/js/extjs/' + extjsVersion + '/packages/charts/classic/triton/resources/charts-all.css');
-    //addStyleFile('offline/charts-all.css');
-
-    addStyleFile('https://cdn.traccar.com/js/ol/' + olVersion + '/ol.css');
-    //addScriptFile('offline/ol.css');
-
-    //addScriptFile('https://cdn.traccar.com/js/ol/' + olVersion + '/ol.js');
-    addScriptFile('offline/ol.js');
-
-    if (debugMode) {
-        //addScriptFile('https://cdn.traccar.com/js/proj4js/' + proj4jsVersion + '/proj4-src.js');
-        addScriptFile('offline/proj4-src.js');
-    } else {
-        //addScriptFile('https://cdn.traccar.com/js/proj4js/' + proj4jsVersion + '/proj4.js');
-        addScriptFile('offline/proj4.js');
-    }
+    addScriptFile('lib/proj4/proj4.js');
 
     window.Images = ['arrow', 'default', 'animal', 'bicycle', 'boat', 'bus', 'car', 'crane', 'helicopter', 'motorcycle',
-        'offroad', 'person', 'pickup', 'plane', 'ship', 'tractor', 'train', 'tram', 'trolleybus', 'truck', 'teltonika',  'van', 'scooter'];
+        'offroad', 'person', 'pickup', 'plane', 'ship', 'tractor', 'train', 'tram', 'trolleybus', 'truck', 'van', 'scooter'];
 
     for (i = 0; i < window.Images.length; i++) {
         addSvgFile('images/' + window.Images[i] + '.svg', window.Images[i] + 'Svg');
