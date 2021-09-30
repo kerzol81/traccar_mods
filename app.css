@@ -28,6 +28,10 @@ body.x-border-layout-ct, div.x-border-layout-ct {
     background-color: #292b2c !important;
 }
 
+.x-panel-header-default-horizontal {
+    background-color: #292b2c !important;
+}
+
 #update {
     position: absolute;
     width: 100%;
