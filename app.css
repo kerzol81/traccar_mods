@@ -24,6 +24,12 @@ body.x-border-layout-ct, div.x-border-layout-ct {
     overflow: visible !important; /* workaround for Safari issue */
 }
 
+.x-btn.x-btn-menu-active.x-btn-default-toolbar-small, .x-btn.x-btn-pressed.x-btn-default-toolbar-small {
+    border-color: #ffffff !important;
+    background-image: none;
+    background-color: #292b2c !important;
+}
+
 .x-panel-header-default-vertical {
     background-color: #292b2c !important;
 }
